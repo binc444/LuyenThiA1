@@ -11,6 +11,6 @@ module ntu.hieutm.appluyenthia1 {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens ntu.hieutm.appluyenthia1 to javafx.fxml;
+    opens ntu.hieutm.appluyenthia1.controllers to javafx.fxml;
     exports ntu.hieutm.appluyenthia1;
 }

@@ -124,7 +124,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>ntu.hieutm.appluyenthia1/ntu.hieutm.appluyenthia1.HelloApplication</mainClass>
+              <mainClass>ntu.hieutm.appluyenthia1/ntu.hieutm.appluyenthia1.Application</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
