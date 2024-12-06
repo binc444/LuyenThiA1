@@ -12,51 +12,57 @@
 
 <AnchorPane prefHeight="434.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntu.hieutm.appluyenthia1.controllers.HomeController">
    <VBox alignment="CENTER" prefWidth="600.0" spacing="10" style="-fx-background-color: #add8e6; -fx-padding: 20;">
-      <!-- Đơn vị ComboBox -->
-      <HBox alignment="CENTER_LEFT" spacing="20">
-         <Label style="-fx-font-weight: bold;" text="Đơn vị:" />
-         <ComboBox fx:id="cmbDonVi" prefWidth="300.0">
-            <items>
-               <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Trung tâm Đào tạo và SHLX" />
-               </FXCollections>
-            </items>
-         </ComboBox>
-      </HBox>
+      <!-- Tiêu đề -->
+      <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #003399;" text="LUYỆN THI LÝ THUYẾT A1" />
 
-      <!-- Khóa ComboBox -->
-      <HBox alignment="CENTER_LEFT" spacing="20">
-         <Label style="-fx-font-weight: bold;" text="Khóa:" />
-         <ComboBox fx:id="cmbKhoa" prefWidth="300.0">
-            <items>
-               <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Tự Luyện Mô tô" />
-               </FXCollections>
-            </items>
-         </ComboBox>
-      </HBox>
+      <VBox alignment="CENTER_LEFT" prefWidth="600.0" spacing="20" style="-fx-padding: 20; -fx-spacing: 10;">
+         <!-- Đơn vị ComboBox -->
+         <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label prefWidth="150.0" style="-fx-font-weight: bold;" text="Đơn vị:" />
+            <ComboBox fx:id="cmbDonVi" maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Trung tâm Đào tạo và SHLX" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+         </HBox>
 
-      <!-- Số báo danh TextField -->
-      <HBox alignment="CENTER_LEFT" spacing="20">
-         <Label style="-fx-font-weight: bold;" text="Số báo danh:" />
-         <TextField fx:id="txtSoBaoDanh" prefWidth="300.0" />
-      </HBox>
+         <!-- Khóa ComboBox -->
+         <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label prefWidth="150.0" style="-fx-font-weight: bold;" text="Khóa:" />
+            <ComboBox fx:id="cmbKhoa" maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Tự Luyện Mô tô" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+         </HBox>
 
-      <!-- Hạng GPLX ComboBox -->
-      <HBox alignment="CENTER_LEFT" spacing="20">
-         <Label style="-fx-font-weight: bold;" text="Hạng GPLX:" />
-         <ComboBox fx:id="cmbHangGPLX" prefWidth="300.0">
-            <items>
-               <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="A1" />
-               </FXCollections>
-            </items>
-         </ComboBox>
-      </HBox>
+         <!-- Số báo danh TextField -->
+         <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label prefWidth="150.0" style="-fx-font-weight: bold;" text="Số báo danh:" />
+            <TextField fx:id="txtSoBaoDanh" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" />
+         </HBox>
 
-      <!-- Nút Kiểm tra thông tin thi -->
-      <HBox alignment="CENTER_LEFT" spacing="20">
+         <!-- Hạng GPLX ComboBox -->
+         <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label prefWidth="150.0" style="-fx-font-weight: bold;" text="Hạng GPLX:" />
+            <ComboBox fx:id="cmbHangGPLX" maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="A1" />
+                  </FXCollections>
+               </items>
+            </ComboBox>
+         </HBox>
+      </VBox>
+
+      <!-- Nút Kiểm tra thông tin thi và đăng ký thi -->
+      <HBox alignment="CENTER" spacing="20">
          <Button fx:id="btnKiemTraThongTin" prefWidth="200.0" style="-fx-background-color: #ffcc00;" text="Kiểm tra thông tin thi" />
+         <Button fx:id="btnDangKy" onAction="#handleDangKy" prefWidth="200.0" style="-fx-background-color: #ffcc00;" text="Đăng ký tài khoản thi" />
       </HBox>
 
       <!-- Vùng hiển thị thông tin người dùng khi nhấn Kiểm tra thông tin thi -->
