@@ -104,7 +104,7 @@
                 </VBox>
             <VBox alignment="BOTTOM_RIGHT" prefHeight="202.0" prefWidth="194.0">
                <children>
-                      <Button fx:id="btnKetThuc" onAction="#KetThucBaiThi" style="-fx-background-color: #ff5722;" text="Kết thúc" />
+                      <Button fx:id="btnKetThuc"  style="-fx-background-color: #ff5722;" text="Kết thúc" />
                </children>
             </VBox>
             </children>
