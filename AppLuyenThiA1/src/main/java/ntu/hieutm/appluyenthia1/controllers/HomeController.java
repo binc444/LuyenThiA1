@@ -70,16 +70,39 @@ public class HomeController {
 
   // Xử lý khi nhấn nút "Vào ôn luyện"
   @FXML
-  private void vaoOnLuyen() {
+  private void vaoLamBai() {
     if (!daKiemTraThongTin) {
       lb_thongTinNguoiDung.setTextFill(Color.RED);
       lb_thongTinNguoiDung.setText("Vui lòng kiểm tra thông tin người dùng trước khi vào ôn luyện!");
+
+      // Hiển thị thông báo yêu cầu kiểm tra thông tin
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("Thông báo");
+      alert.setHeaderText("Yêu cầu kiểm tra thông tin");
+      alert.setContentText("Bạn cần nhấn nút 'Kiểm tra thông tin thi' trước khi vào ôn luyện.");
+      alert.showAndWait();
     } else {
       try {
+        // Chuyển đến màn hình "view_lambai"
         App.switchScene("fxml/view_lambai.fxml");
       } catch (Exception e) {
         e.printStackTrace();
       }
     }
   }
+
+  // Xử lý khi nhấn nút "Hủy bỏ"
+  @FXML
+  private void closeApp() {
+    // Hiển thị hộp thoại xác nhận trước khi đóng ứng dụng
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Xác nhận");
+    alert.setHeaderText("Bạn có chắc chắn muốn thoát?");
+    alert.setContentText("Nhấn OK để đóng ứng dụng, hoặc Cancel để quay lại.");
+
+    if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+      System.exit(0); // Đóng ứng dụng
+    }
+  }
+
 }

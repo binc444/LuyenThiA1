@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -21,7 +22,7 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFile));
     Scene scene = new Scene(loader.load());
     primaryStage.setScene(scene); // Sử dụng Stage chính
-    primaryStage.setTitle("Ứng dụng luyện thi A1");
+    primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.show();
   }
 
