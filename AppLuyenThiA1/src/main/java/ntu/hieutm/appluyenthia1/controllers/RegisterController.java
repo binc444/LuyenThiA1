@@ -1,74 +1,67 @@
 package ntu.hieutm.appluyenthia1.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import ntu.hieutm.appluyenthia1.App;
 import ntu.hieutm.appluyenthia1.utils.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class RegisterController {
+
+  @FXML
+  private TextField txtHoTen, txtSoCCCD, txtDiaChi;
+  @FXML
+  private DatePicker txtNgaySinh;
   @FXML
   private TextField txtSoBaoDanh;
   @FXML
-  private TextField txtHoTen;
-  @FXML
-  private TextField txtNgaySinh;
-  @FXML
-  private TextField txtSoCCCD;
-  @FXML
-  private TextField txtDiaChi;
-  @FXML
-  private TextField txtMatKhau;
+  private ComboBox<String> cmbLoaiGPLX;
 
-  // Xử lý đăng ký tài khoản
   @FXML
-  private void handleDangKy() {
-    String soBaoDanh = txtSoBaoDanh.getText();
-    String hoTen = txtHoTen.getText();
-    String ngaySinh = txtNgaySinh.getText();
-    String soCCCD = txtSoCCCD.getText();
-    String diaChi = txtDiaChi.getText();
-    String matKhau = txtMatKhau.getText();
+  private void dangKy() {
+    String hoTen = txtHoTen.getText().trim();
+    String ngaySinh = (txtNgaySinh.getValue() != null) ? txtNgaySinh.getValue().toString() : "";
+    String soCCCD = txtSoCCCD.getText().trim();
+    String diaChi = txtDiaChi.getText().trim();
+    String loaiGPLX = cmbLoaiGPLX.getValue();
+    String soBaoDanh = txtSoBaoDanh.getText().trim(); // Lấy giá trị từ người dùng
 
-    if (soBaoDanh.isEmpty() || hoTen.isEmpty() || ngaySinh.isEmpty() || soCCCD.isEmpty() || diaChi.isEmpty() || matKhau.isEmpty()) {
-      // Hiển thị cảnh báo nếu có trường trống
-      Alert alert = new Alert(Alert.AlertType.WARNING);
-      alert.setTitle("Thông báo");
-      alert.setHeaderText("Thông tin không đầy đủ");
-      alert.setContentText("Vui lòng điền đầy đủ thông tin.");
-      alert.showAndWait();
-    } else {
-      // Tiến hành đăng ký tài khoản vào cơ sở dữ liệu
-      try (Connection conn = DatabaseConnection.getConnnection("luyenthia1", "root", "")) {
-        String sql = "INSERT INTO nguoidung (soBaoDanh, hoTen, ngaySinh, soCCCD, diaChi, matKhau) VALUES (?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-          pstmt.setString(1, soBaoDanh);
-          pstmt.setString(2, hoTen);
-          pstmt.setString(3, ngaySinh);
-          pstmt.setString(4, soCCCD);
-          pstmt.setString(5, diaChi);
-          pstmt.setString(6, matKhau);
+    if (hoTen.isEmpty() || ngaySinh.isEmpty() || soCCCD.isEmpty() || diaChi.isEmpty() || loaiGPLX == null || soBaoDanh.isEmpty()) {
+      Alert alert = new Alert(Alert.AlertType.WARNING, "Vui lòng nhập đầy đủ thông tin!", ButtonType.OK);
+      alert.show();
+      return;
+    }
 
-          int rowsAffected = pstmt.executeUpdate();
-          if (rowsAffected > 0) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Đăng ký thành công");
-            alert.setHeaderText("Thông tin đăng ký");
-            alert.setContentText("Đăng ký tài khoản thành công!");
-            alert.showAndWait();
-          }
-        }
-      } catch (SQLException e) {
-        e.printStackTrace();
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Lỗi");
-        alert.setHeaderText("Đã xảy ra lỗi trong quá trình đăng ký");
-        alert.setContentText("Vui lòng thử lại.");
-        alert.showAndWait();
-      }
+    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_banglaixe", "root", "")) {
+      String query = "INSERT INTO nguoi_dung (loai_gplx, ho_ten, ngay_sinh, so_cccd, dia_chi, so_bao_danh) VALUES (?, ?, ?, ?, ?, ?)";
+      PreparedStatement stmt = conn.prepareStatement(query);
+      stmt.setString(1, loaiGPLX);
+      stmt.setString(2, hoTen);
+      stmt.setString(3, ngaySinh);
+      stmt.setString(4, soCCCD);
+      stmt.setString(5, diaChi);
+      stmt.setString(6, soBaoDanh);
+
+      stmt.executeUpdate();
+
+      Alert alert = new Alert(Alert.AlertType.INFORMATION, "Đăng ký thành công! Số báo danh: " + soBaoDanh, ButtonType.OK);
+      alert.show();
+
+      App.switchScene("fxml/view_home");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+
+  @FXML
+  private void quayLaiHome() {
+    try {
+      App.switchScene("fxml/view_home.fxml");
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 }

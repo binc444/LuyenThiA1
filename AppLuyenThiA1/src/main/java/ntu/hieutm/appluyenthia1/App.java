@@ -4,23 +4,29 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ntu.hieutm.appluyenthia1.utils.DatabaseConnection;
 
 import java.io.IOException;
-import java.sql.Connection;
 
 public class App extends Application {
+
+  private static Stage primaryStage;
+
   @Override
   public void start(Stage stage) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("fxml/view_home.fxml"));
-    Scene scene = new Scene(fxmlLoader.load());
-    stage.setTitle("APP luyện thi A1");
-    stage.setScene(scene);
-    stage.show();
+    primaryStage = stage; // Gán Stage chính
+    switchScene("fxml/view_home.fxml");
   }
+
+  public static void switchScene(String fxmlFile) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFile));
+    Scene scene = new Scene(loader.load());
+    primaryStage.setScene(scene); // Sử dụng Stage chính
+    primaryStage.setTitle("Ứng dụng luyện thi A1");
+    primaryStage.show();
+  }
+
 
   public static void main(String[] args) {
-    launch();
+    launch(args);
   }
 }
-

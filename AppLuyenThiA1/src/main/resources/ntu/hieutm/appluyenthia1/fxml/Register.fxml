@@ -1,41 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntu.hieutm.appluyenthia1.controllers.RegisterController">
-    <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #add8e6; -fx-padding: 20;">
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntu.hieutm.appluyenthia1.controllers.RegisterController">
+    <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #f0f8ff; -fx-padding: 20;" prefWidth="600.0" prefHeight="400.0">
         <!-- Tiêu đề -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #003399;" text="ĐĂNG KÝ TÀI KHOẢN THI" />
+        <Label text="Đăng ký tài khoản thi" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #003399;" />
 
-        <!-- Số báo danh -->
-        <Label text="Số báo danh:" />
-        <TextField fx:id="txtSoBaoDanh" maxWidth="300.0" prefWidth="300.0" />
+        <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 20;">
+            <!-- Họ tên -->
+            <HBox spacing="10">
+                <Label text="Họ và tên:" prefWidth="120.0" />
+                <TextField fx:id="txtHoTen" prefWidth="300.0" />
+            </HBox>
 
-        <!-- Họ tên -->
-        <Label text="Họ và tên:" />
-        <TextField fx:id="txtHoTen" maxWidth="300.0" prefWidth="300.0" />
+            <!-- Ngày sinh -->
+            <HBox spacing="10">
+                <Label text="Ngày sinh:" prefWidth="120.0" />
+                <DatePicker fx:id="txtNgaySinh" prefWidth="300.0" />
+            </HBox>
 
-        <!-- Ngày sinh -->
-        <Label text="Ngày sinh:" />
-        <TextField fx:id="txtNgaySinh" maxWidth="300.0" prefWidth="300.0" />
+            <!-- Số CCCD -->
+            <HBox spacing="10">
+                <Label text="Số CCCD:" prefWidth="120.0" />
+                <TextField fx:id="txtSoCCCD" prefWidth="300.0" />
+            </HBox>
 
-        <!-- Số CCCD -->
-        <Label text="Số CCCD:" />
-        <TextField fx:id="txtSoCCCD" maxWidth="300.0" prefWidth="300.0" />
+            <!-- Địa chỉ -->
+            <HBox spacing="10">
+                <Label text="Địa chỉ:" prefWidth="120.0" />
+                <TextField fx:id="txtDiaChi" prefWidth="300.0" />
+            </HBox>
 
-        <!-- Địa chỉ -->
-        <Label text="Địa chỉ:" />
-        <TextField fx:id="txtDiaChi" maxWidth="300.0" prefWidth="300.0" />
+            <!-- Hạng GPLX -->
+            <HBox spacing="10">
+                <Label text="Hạng GPLX:" prefWidth="120.0" />
+                <ComboBox fx:id="cmbLoaiGPLX" prefWidth="300.0">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="A1" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+            <!-- Số báo danh -->
+            <HBox spacing="10">
+                <Label text="Số báo danh:" prefWidth="120.0" />
+                <TextField fx:id="txtSoBaoDanh" prefWidth="300.0" />
+            </HBox>
+        </VBox>
 
-        <!-- Mật khẩu -->
-        <Label text="Mật khẩu:" />
-        <TextField fx:id="txtMatKhau" maxWidth="300.0" prefWidth="300.0" />
-
-        <!-- Nút đăng ký -->
-        <Button fx:id="btnDangKy" onAction="#handleDangKy" prefWidth="200.0" style="-fx-background-color: #ffcc00;" text="Đăng ký" />
+        <!-- Nút hành động -->
+        <HBox alignment="CENTER" spacing="20">
+            <Button fx:id="btnDangKy" text="Đăng ký" onAction="#dangKy" style="-fx-background-color: #4caf50;" />
+            <Button fx:id="btnQuayLai" text="Quay lại" onAction="#quayLaiHome" style="-fx-background-color: #f44336;" />
+        </HBox>
     </VBox>
 </AnchorPane>

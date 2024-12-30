@@ -1,29 +1,85 @@
 package ntu.hieutm.appluyenthia1.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import ntu.hieutm.appluyenthia1.App;
+import ntu.hieutm.appluyenthia1.utils.DatabaseConnection;
 
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class HomeController {
 
   @FXML
-  private void handleDangKy() {
-    try {
-      // Load FXML của giao diện đăng ký
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/Register.fxml"));
-      AnchorPane registerPane = loader.load();
+  private ComboBox<String> cmbDonVi, cmbKhoa, cmbHangGPLX;
+  @FXML
+  private TextField txtSoBaoDanh;
+  @FXML
+  private Label lb_thongTinNguoiDung, lblLoaiGPLX, lblHoTen, lblNgaySinh, lblSoCCCD, lblDiaChi;
 
-      // Hiển thị giao diện đăng ký
-      Stage stage = new Stage();
-      stage.setScene(new Scene(registerPane));
-      stage.setTitle("Đăng ký tài khoản thi");
-      stage.show();
-    } catch (IOException e) {
+  private boolean daKiemTraThongTin = false; // Trạng thái kiểm tra thông tin
+
+  // Xử lý khi nhấn nút "Đăng ký tài khoản thi"
+  @FXML
+  private void moManHinhDangKy() {
+    try {
+      App.switchScene("fxml/register.fxml");
+    } catch (Exception e) {
       e.printStackTrace();
+    }
+  }
+
+  // Xử lý khi nhấn nút "Kiểm tra thông tin thi"
+  @FXML
+  private void checkThongTin() {
+    String soBaoDanh = txtSoBaoDanh.getText().trim();
+    if (soBaoDanh.isEmpty()) {
+      Alert alert = new Alert(Alert.AlertType.WARNING, "Vui lòng nhập số báo danh!", ButtonType.OK);
+      alert.show();
+      return;
+    }
+
+    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_banglaixe", "root", "")) {
+      String query = "SELECT * FROM nguoi_dung WHERE so_bao_danh = ?";
+      PreparedStatement stmt = conn.prepareStatement(query);
+      stmt.setString(1, soBaoDanh);
+
+      ResultSet rs = stmt.executeQuery();
+
+      if (rs.next()) {
+        lblLoaiGPLX.setText("Loại GPLX: " + rs.getString("loai_gplx"));
+        lblHoTen.setText("Họ tên: " + rs.getString("ho_ten"));
+        lblNgaySinh.setText("Ngày sinh: " + rs.getDate("ngay_sinh"));
+        lblSoCCCD.setText("Số CCCD: " + rs.getString("so_cccd"));
+        lblDiaChi.setText("Địa chỉ: " + rs.getString("dia_chi"));
+
+        lb_thongTinNguoiDung.setTextFill(Color.BLACK);
+        lb_thongTinNguoiDung.setText("Thông tin người dùng đã được kiểm tra.");
+        daKiemTraThongTin = true;
+      } else {
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Không tìm thấy thông tin với số báo danh này!", ButtonType.OK);
+        alert.show();
+        daKiemTraThongTin = false;
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  // Xử lý khi nhấn nút "Vào ôn luyện"
+  @FXML
+  private void vaoOnLuyen() {
+    if (!daKiemTraThongTin) {
+      lb_thongTinNguoiDung.setTextFill(Color.RED);
+      lb_thongTinNguoiDung.setText("Vui lòng kiểm tra thông tin người dùng trước khi vào ôn luyện!");
+    } else {
+      try {
+        App.switchScene("fxml/view_lambai.fxml");
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
   }
 }
