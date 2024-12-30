@@ -1,7 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntu.hieutm.appluyenthia1.controllers.LamBaiController">
-
+<AnchorPane prefHeight="570.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntu.hieutm.appluyenthia1.controllers.LamBaiController">
+    <children>
+        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="378.0" prefHeight="178.0" prefWidth="683.0" spacing="10" style="-fx-background-color: #add8e6; -fx-padding: 10;">
+            <children>
+                <Label fx:id="lb_thongTinNguoiDung" style="-fx-font-weight: bold;" text="Thông tin thí sinh" />
+                <Label fx:id="lblLoaiGPLX" text="Loại GPLX: -" />
+                <Label fx:id="lblHoTen" text="Họ tên: -" />
+                <Label fx:id="lblNgaySinh" text="Ngày sinh: -" />
+                <Label fx:id="lblSoCCCD" text="Số CCCD: -" />
+                <Label fx:id="lblDiaChi" text="Địa chỉ: -" />
+            </children>
+        </VBox>
+        <HBox layoutX="14.0" layoutY="16.0" prefHeight="342.0" prefWidth="683.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="351.0" prefWidth="705.0" spacing="10" style="-fx-padding: 10;">
+                    <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Label fx:id="lblCauHoi" alignment="TOP_LEFT" prefHeight="106.0" prefWidth="683.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Câu hỏi: -">
+                                <font>
+                                    <Font size="10.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </HBox>
+                    <HBox alignment="CENTER" prefHeight="74.0" prefWidth="685.0">
+                        <children>
+                            <ImageView fx:id="imgCauHoi" fitHeight="96.0" fitWidth="131.0" nodeOrientation="INHERIT" />
+                        </children>
+                    </HBox>
+                    <VBox prefHeight="107.0" prefWidth="685.0" spacing="10">
+                        <HBox spacing="10">
+                            <Button fx:id="btnDapAnA" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: #d3d3d3;" text="Đáp án A" />
+                            <Button fx:id="btnDapAnB" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: #d3d3d3;" text="Đáp án B" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Button fx:id="btnDapAnC" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: #d3d3d3;" text="Đáp án C" />
+                            <Button fx:id="btnDapAnD" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: #d3d3d3;" text="Đáp án D" />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </children>
+        </HBox>
+        <VBox fx:id="Quiz" layoutX="709.0" layoutY="8.0" prefHeight="548.0" prefWidth="214.0" style="-fx-padding: 10; -fx-background-color: #add8e6;">
+            <children>
+                <Label fx:id="lblThoiGianConLai" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Thời gian còn lại: 00:00">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin></Label>
+                <VBox spacing="5">
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 1" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 2" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 3" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 4" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 5" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 6" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 7" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 8" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 9" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button prefHeight="26.0" prefWidth="52.8" style="-fx-background-color: #d3d3d3;" text="Câu 10" />
+                        <Button prefHeight="26.0" prefWidth="52.8" style="-fx-background-color: #d3d3d3;" text="Câu 11" />
+                        <Button prefHeight="26.0" prefWidth="52.8" style="-fx-background-color: #d3d3d3;" text="Câu 12" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 13" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 14" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 15" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 16" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 17" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 18" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 19" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 20" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 21" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 22" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 23" />
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 24" />
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button style="-fx-background-color: #d3d3d3;" text="Câu 25" />
+                    </HBox>
+                </VBox>
+            <VBox alignment="BOTTOM_RIGHT" prefHeight="202.0" prefWidth="194.0">
+               <children>
+                      <Button fx:id="btnKetThuc" onAction="#KetThucBaiThi" style="-fx-background-color: #ff5722;" text="Kết thúc" />
+               </children>
+            </VBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

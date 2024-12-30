@@ -67,7 +67,7 @@
 
       <!-- Vùng hiển thị thông tin người dùng khi nhấn Kiểm tra thông tin thi -->
       <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
-         <Label fx:id="lb_thongTinNguoiDung" style="-fx-font-weight: bold;" text="Thông tin người dùng:" />
+         <Label fx:id="lb_thongTinNguoiDung" style="-fx-font-weight: bold;" text="Thông tin thí sinh:" />
          <Label fx:id="lblLoaiGPLX" text="Loại GPLX: -" />
          <Label fx:id="lblHoTen" text="Họ tên: -" />
          <Label fx:id="lblNgaySinh" text="Ngày sinh: -" />
@@ -77,9 +77,9 @@
 
       <!-- Nút vào ôn luyện, xem lại bài thi và hủy bỏ -->
       <HBox alignment="CENTER" spacing="20">
-         <Button fx:id="btnVaoOnLuyen" onAction="#vaoLamBai" style="-fx-background-color: #4caf50;" text="Vào ôn luyện" />
+         <Button fx:id="btnVaoOnLuyen" style="-fx-background-color: #4caf50;" text="Vào ôn luyện" />
          <Button fx:id="btnXemLaiBaiThi" style="-fx-background-color: #f44336;" text="Xem lại bài thi" />
-         <Button fx:id="btnHuyBo" onAction="#closeApp" style="-fx-background-color: #ff5722;" text="Hủy bỏ" />
+         <Button fx:id="btnHuyBo" style="-fx-background-color: #ff5722;" text="Hủy bỏ" />
       </HBox>
    </VBox>
 </AnchorPane>
