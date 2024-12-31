@@ -22,7 +22,6 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFile));
     Scene scene = new Scene(loader.load());
     primaryStage.setScene(scene); // Sử dụng Stage chính
-    primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.show();
   }
 

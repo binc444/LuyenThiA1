@@ -1,0 +1,77 @@
+/* Toàn bộ ứng dụng */
+.root {
+    -fx-font-family: 'Arial';
+    -fx-background-color: #f0f8ff;
+}
+
+/* Label mặc định */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Label tiêu đề (ví dụ, thông tin thí sinh) */
+.label-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e90ff;
+}
+
+/* Label thời gian */
+#lblThoiGianConLai {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff4500;
+}
+
+/* Nút mặc định */
+.button {
+    -fx-background-color: #d3d3d3;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5 10;
+}
+
+/* Nút được chọn */
+.button-selected {
+    -fx-background-color: #00ff00;
+    -fx-text-fill: #ffffff;
+}
+
+/* Nút kết thúc */
+#btnKetThuc {
+    -fx-background-color: #ff5722;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Ảnh câu hỏi */
+.image-view {
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 2px;
+    -fx-padding: 5;
+}
+
+/* Hộp chứa câu hỏi */
+#Quiz {
+    -fx-background-color: #add8e6;
+    -fx-padding: 10;
+    -fx-border-radius: 5px;
+}
+
+/* VBox chứa thông tin thí sinh */
+.vbox {
+    -fx-background-color: #e6f7ff;
+    -fx-padding: 10;
+    -fx-border-radius: 5px;
+}
+
+/* HBox chứa các đáp án */
+.hbox {
+    -fx-spacing: 10;
+}
