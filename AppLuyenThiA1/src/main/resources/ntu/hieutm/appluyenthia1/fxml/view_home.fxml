@@ -66,7 +66,7 @@
       </HBox>
 
       <!-- Vùng hiển thị thông tin người dùng khi nhấn Kiểm tra thông tin thi -->
-      <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+      <VBox alignment="CENTER_LEFT" prefHeight="190.0" prefWidth="560.0" spacing="10" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
          <Label fx:id="lb_thongTinNguoiDung" style="-fx-font-weight: bold;" text="Thông tin thí sinh:" />
          <Label fx:id="lblLoaiGPLX" text="Loại GPLX: -" />
          <Label fx:id="lblHoTen" text="Họ tên: -" />

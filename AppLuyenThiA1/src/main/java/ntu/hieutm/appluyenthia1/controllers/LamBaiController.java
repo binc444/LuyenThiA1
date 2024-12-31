@@ -2,6 +2,7 @@ package ntu.hieutm.appluyenthia1.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class LamBaiController {
 
@@ -17,6 +18,9 @@ public class LamBaiController {
   @FXML
   private Button btnDapAn1, btnDapAn2, btnDapAn3, btnDapAn4; // Các nút đáp án
 
+  @FXML
+  private Label lblLoaiGPLX, lblHoTen, lblNgaySinh, lblSoCCCD, lblDiaChi, lblSoBaoDanh;
+
   // Màu mặc định của các nút
   private static final String DEFAULT_COLOR = "#d3d3d3";
   // Màu khi nút được nhấn
@@ -26,6 +30,8 @@ public class LamBaiController {
   private Button currentActiveButton = null;
   // Biến lưu trữ nút đáp án hiện tại đang được nhấn
   private Button currentAnswerButton = null;
+
+  private String currentSoBaoDanh; // Biến lưu số báo danh hiện tại
 
   @FXML
   public void initialize() {
@@ -54,7 +60,6 @@ public class LamBaiController {
     button.setOnAction(event -> {
       // Nếu nút hiện tại đã được nhấn, reset lại màu của nó
       if (currentActiveButton != null && currentActiveButton != button) {
-        // Đặt lại màu nút đang được nhấn trước đó về màu mặc định
         currentActiveButton.setStyle("-fx-background-color: " + DEFAULT_COLOR + ";");
       }
 
@@ -71,7 +76,6 @@ public class LamBaiController {
     button.setOnAction(event -> {
       // Nếu có một nút đáp án khác đang được nhấn, reset lại màu của nó
       if (currentAnswerButton != null && currentAnswerButton != button) {
-        // Đặt lại màu nút đáp án đang được nhấn trước đó về màu mặc định
         currentAnswerButton.setStyle("-fx-background-color: " + DEFAULT_COLOR + ";");
       }
 
@@ -82,4 +86,16 @@ public class LamBaiController {
       currentAnswerButton = button;
     });
   }
+
+  // Phương thức nhận và hiển thị thông tin người dùng
+  public void setUserData(String loaiGPLX, String hoTen, String ngaySinh, String soCCCD, String diaChi, String soBaoDanh) {
+    lblLoaiGPLX.setText("Loại GPLX: " + loaiGPLX);
+    lblHoTen.setText("Họ tên: " + hoTen);
+    lblNgaySinh.setText("Ngày sinh: " + ngaySinh);
+    lblSoCCCD.setText("Số CCCD: " + soCCCD);
+    lblDiaChi.setText("Địa chỉ: " + diaChi);
+    lblSoBaoDanh.setText("Số Báo Danh: " + soBaoDanh);
+  }
+
 }
+

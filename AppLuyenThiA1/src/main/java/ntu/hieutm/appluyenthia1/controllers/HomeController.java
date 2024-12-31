@@ -1,6 +1,9 @@
 package ntu.hieutm.appluyenthia1.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import ntu.hieutm.appluyenthia1.App;
@@ -75,7 +78,6 @@ public class HomeController {
       lb_thongTinNguoiDung.setTextFill(Color.RED);
       lb_thongTinNguoiDung.setText("Vui lòng kiểm tra thông tin người dùng trước khi vào ôn luyện!");
 
-      // Hiển thị thông báo yêu cầu kiểm tra thông tin
       Alert alert = new Alert(Alert.AlertType.WARNING);
       alert.setTitle("Thông báo");
       alert.setHeaderText("Yêu cầu kiểm tra thông tin");
@@ -83,13 +85,34 @@ public class HomeController {
       alert.showAndWait();
     } else {
       try {
-        // Chuyển đến màn hình "view_lambai"
-        App.switchScene("fxml/view_lambai.fxml");
+        // Lấy thông tin từ các Label trong HomeController
+        String loaiGPLX = lblLoaiGPLX.getText().replace("Loại GPLX: ", "");
+        String hoTen = lblHoTen.getText().replace("Họ tên: ", "");
+        String ngaySinh = lblNgaySinh.getText().replace("Ngày sinh: ", "");
+        String soCCCD = lblSoCCCD.getText().replace("Số CCCD: ", "");
+        String diaChi = lblDiaChi.getText().replace("Địa chỉ: ", "");
+        String soBaoDanh = txtSoBaoDanh.getText(); // Lấy giá trị từ TextField
+
+        // Load fxml "view_lambai.fxml"
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/view_lambai.fxml"));
+        Parent root = loader.load();
+
+        // Lấy LamBaiController từ FXMLLoader
+        LamBaiController lamBaiController = loader.getController();
+
+        // Truyền thông tin người dùng vào LamBaiController
+        lamBaiController.setUserData(loaiGPLX, hoTen, ngaySinh, soCCCD, diaChi, soBaoDanh);
+
+        // Chuyển sang màn hình mới
+        Scene scene = new Scene(root);
+        App.primaryStage.setScene(scene);
+        App.primaryStage.show();
       } catch (Exception e) {
         e.printStackTrace();
       }
     }
   }
+
 
   // Xử lý khi nhấn nút "Hủy bỏ"
   @FXML

@@ -11,19 +11,20 @@
 
 <AnchorPane prefHeight="570.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntu.hieutm.appluyenthia1.controllers.LamBaiController">
     <children>
-        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="378.0" prefHeight="178.0" prefWidth="683.0" spacing="10" style="-fx-background-color: #add8e6; -fx-padding: 10;">
+        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="358.0" prefHeight="178.0" prefWidth="683.0" spacing="10" style="-fx-background-color: #add8e6; -fx-padding: 10;">
             <children>
                 <Label fx:id="lb_thongTinNguoiDung" style="-fx-font-weight: bold;" text="Thông tin thí sinh" />
-                <Label fx:id="lbl_LoaiGPLX" text="Loại GPLX: -" />
-                <Label fx:id="lbl_HoTen" text="Họ tên: -" />
-                <Label fx:id="lbl_NgaySinh" text="Ngày sinh: -" />
-                <Label fx:id="lbl_SoCCCD" text="Số CCCD: -" />
-                <Label fx:id="lbl_DiaChi" text="Địa chỉ: -" />
+                <Label fx:id="lblLoaiGPLX" text="Loại GPLX: -" />
+                <Label fx:id="lblHoTen" text="Họ tên: -" />
+                <Label fx:id="lblNgaySinh" text="Ngày sinh: -" />
+                <Label fx:id="lblSoCCCD" text="Số CCCD: -" />
+                <Label fx:id="lblDiaChi" text="Địa chỉ: -" />
+            <Label fx:id="lblSoBaoDanh" text="Số báo danh:" />
             </children>
         </VBox>
         <HBox layoutX="14.0" layoutY="16.0" prefHeight="342.0" prefWidth="683.0">
             <children>
-                <VBox alignment="CENTER" prefHeight="351.0" prefWidth="705.0" spacing="10" style="-fx-padding: 10;">
+                <VBox alignment="CENTER" prefHeight="324.0" prefWidth="684.0" spacing="10" style="-fx-padding: 10;">
                     <HBox prefHeight="100.0" prefWidth="200.0">
                         <children>
                             <Label fx:id="lbl_CauHoi" alignment="TOP_LEFT" prefHeight="106.0" prefWidth="683.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Câu hỏi: -">
@@ -38,7 +39,7 @@
                             <ImageView fx:id="imgCauHoi" fitHeight="96.0" fitWidth="457.0" nodeOrientation="INHERIT" />
                         </children>
                     </HBox>
-                    <VBox prefHeight="107.0" prefWidth="685.0" spacing="10">
+                    <VBox prefHeight="86.0" prefWidth="663.0" spacing="10">
                         <HBox spacing="10">
                             <Button fx:id="btnDapAn1" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: #d3d3d3;" text="Đáp án 1" />
                             <Button fx:id="btnDapAn2" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: #d3d3d3;" text="Đáp án 2" />
