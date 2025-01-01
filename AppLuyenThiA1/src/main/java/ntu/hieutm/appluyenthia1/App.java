@@ -21,9 +21,12 @@ public class App extends Application {
   public static void switchScene(String fxmlFile) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFile));
     Scene scene = new Scene(loader.load());
+
+    primaryStage.initStyle(StageStyle.UNDECORATED);
     primaryStage.setScene(scene); // Sử dụng Stage chính
     primaryStage.show();
   }
+
 
 
   public static void main(String[] args) {
