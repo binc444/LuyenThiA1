@@ -6,9 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import ntu.hieutm.appluyenthia1.App;
 import ntu.hieutm.appluyenthia1.utils.DatabaseConnection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -113,6 +116,15 @@ public class HomeController {
     }
   }
 
+  //Nút xem bài làm
+  @FXML
+  private void xemBaiLam() {
+    try {
+      App.switchScene("fxml/view_xembailam.fxml");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
   // Xử lý khi nhấn nút "Hủy bỏ"
   @FXML
