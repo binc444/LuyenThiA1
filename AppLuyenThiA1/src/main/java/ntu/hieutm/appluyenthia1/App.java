@@ -22,10 +22,15 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFile));
     Scene scene = new Scene(loader.load());
 
-    primaryStage.initStyle(StageStyle.UNDECORATED);
-    primaryStage.setScene(scene); // Sử dụng Stage chính
+    if (primaryStage.getScene() == null) {
+      // Nếu chưa có Scene, khởi tạo Stage với style
+      primaryStage.initStyle(StageStyle.UNDECORATED);
+    }
+
+    primaryStage.setScene(scene); // Đặt Scene mới
     primaryStage.show();
   }
+
 
 
 

@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import java.net.URL?>
 <AnchorPane prefHeight="570.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ntu.hieutm.appluyenthia1.controllers.LamBaiController">
     <children>
-        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="358.0" prefHeight="178.0" prefWidth="683.0" spacing="10" style="-fx-background-color: #add8e6; -fx-padding: 10;">
+        <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="358.0" prefHeight="178.0" prefWidth="683.0" spacing="10" style="-fx-background-color: #add8e6; -fx-padding: 10;" styleClass="button" stylesheets="@../css/style.css">
             <children>
                 <Label fx:id="lb_thongTinNguoiDung" style="-fx-font-weight: bold;" text="Thông tin thí sinh" />
                 <Label fx:id="lblLoaiGPLX" text="Loại GPLX: -" />
@@ -28,7 +27,7 @@
                 <VBox alignment="CENTER" prefHeight="324.0" prefWidth="684.0" spacing="10" style="-fx-padding: 10;">
                     <HBox prefHeight="54.0" prefWidth="663.0">
                         <children>
-                            <Label fx:id="lbl_CauHoi" alignment="TOP_LEFT" prefHeight="56.0" prefWidth="663.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Câu hỏi: -" wrapText="true">
+                            <Label fx:id="lbl_CauHoi" alignment="TOP_LEFT" prefHeight="62.0" prefWidth="663.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Câu hỏi: -" wrapText="true">
                                 <font>
                                     <Font size="10.0" />
                                 </font>
@@ -37,11 +36,11 @@
                     </HBox>
                     <HBox alignment="CENTER" prefHeight="74.0" prefWidth="685.0">
                         <children>
-                            <ImageView fx:id="imgCauHoi" fitHeight="149.0" fitWidth="457.0" nodeOrientation="INHERIT" />
+                            <ImageView fx:id="imgCauHoi" fitHeight="125.0" fitWidth="457.0" nodeOrientation="INHERIT" />
                         </children>
                     </HBox>
-                    <VBox prefHeight="140.0" prefWidth="663.0" spacing="10">
-                        <HBox spacing="10">
+                    <VBox prefHeight="122.0" prefWidth="663.0" spacing="10">
+                        <HBox prefWidth="663.0" spacing="10">
                             <Button fx:id="btnDapAn1" prefHeight="60.0" prefWidth="230.0" style="-fx-background-color: #d3d3d3;" text="Đáp án 1" wrapText="true">
                         <HBox.margin>
                            <Insets right="50.0" />
@@ -136,7 +135,7 @@
                 </VBox>
                 <VBox alignment="BOTTOM_RIGHT" prefHeight="202.0" prefWidth="194.0">
                     <children>
-                        <Button fx:id="btnKetThuc" prefHeight="26.0" prefWidth="196.0" style="-fx-background-color: #ff5722;" text="Kết thúc" />
+                        <Button fx:id="btnKetThuc" onAction="#ketThucThi" prefHeight="26.0" prefWidth="196.0" style="-fx-background-color: #ff5722;" text="Kết thúc" />
                     </children>
                 </VBox>
             </children>
