@@ -45,21 +45,31 @@ public class LamBaiController {
   private Button currentActiveButton = null;
   private Button currentAnswerButton = null;
 
+  // Mảng lưu chỉ số đáp án người dùng đã chọn
+  private int[] userAnswers;
+
   // Tạo đối tượng BLL để lấy câu hỏi từ tầng BLL
   private final QuestionBLL questionBLL = new QuestionBLL();
   private List<QuestionDTO> questions;
+  private Button[] questionButtons;
 
   // Phương thức khởi tạo khi Controller được khởi tạo
   @FXML
   public void initialize() {
     try {
       // Tạo mảng các nút câu hỏi
-      Button[] questionButtons = {
+      questionButtons = new Button[]{
           btn_cau1, btn_cau2, btn_cau3, btn_cau4, btn_cau5, btn_cau6,
           btn_cau7, btn_cau8, btn_cau9, btn_cau10, btn_cau11, btn_cau12,
           btn_cau13, btn_cau14, btn_cau15, btn_cau16, btn_cau17, btn_cau18,
           btn_cau19, btn_cau20, btn_cau21, btn_cau22, btn_cau23, btn_cau24, btn_cau25
       };
+
+      // Khởi tạo mảng đáp án
+      userAnswers = new int[25];
+      for (int i = 0; i < userAnswers.length; i++) {
+        userAnswers[i] = -1; // -1 nghĩa là chưa chọn đáp án
+      }
 
       // Đăng ký sự kiện cho tất cả các nút câu hỏi để gọi phương thức loadCauHoi
       for (int i = 0; i < questionButtons.length; i++) {
@@ -96,7 +106,7 @@ public class LamBaiController {
 
       QuestionDTO question = questions.get(index);
       lbl_CauHoi.setText("Câu hỏi: " + question.getContent());
-      lbl_CauHoi.setWrapText(true); // Cho phép tự động xuống dòng nếu câu hỏi quá dài
+      lbl_CauHoi.setWrapText(true);
 
       // Kiểm tra và tải ảnh câu hỏi (nếu có)
       String imagePath = "/ntu/hieutm/appluyenthia1/images/" + question.getImagePath();
@@ -108,14 +118,13 @@ public class LamBaiController {
         System.out.println("Không tìm thấy ảnh: " + imagePath);
       }
 
-      // Cập nhật ảnh cho câu hỏi
       if (image != null) {
         imgCauHoi.setImage(image);
       } else {
-        imgCauHoi.setImage(null); // Đặt ảnh mặc định nếu không tìm thấy ảnh
+        imgCauHoi.setImage(null);
       }
 
-      // Hiển thị đáp án cho câu hỏi
+      // Hiển thị đáp án
       String[] answers = question.getAnswers();
       if (answers != null && answers.length >= 4) {
         btnDapAn1.setText(answers[0]);
@@ -123,14 +132,30 @@ public class LamBaiController {
         btnDapAn3.setText(answers[2]);
         btnDapAn4.setText(answers[3]);
 
-        // Đặt chế độ xuống dòng cho các nút đáp án
         btnDapAn1.setWrapText(true);
         btnDapAn2.setWrapText(true);
         btnDapAn3.setWrapText(true);
         btnDapAn4.setWrapText(true);
-      } else {
-        System.out.println("Đáp án không hợp lệ cho câu hỏi tại index: " + index);
       }
+
+      // Khôi phục trạng thái đáp án
+      int selectedAnswer = userAnswers[index];
+      Button[] answerButtons = {btnDapAn1, btnDapAn2, btnDapAn3, btnDapAn4};
+      for (int i = 0; i < answerButtons.length; i++) {
+        if (i == selectedAnswer) {
+          answerButtons[i].setStyle("-fx-background-color: " + ACTIVE_COLOR + ";");
+          currentAnswerButton = answerButtons[i];
+        } else {
+          answerButtons[i].setStyle("-fx-background-color: " + DEFAULT_COLOR + ";");
+        }
+      }
+
+      // Đổi màu nút câu hỏi được chọn
+      if (currentActiveButton != null && currentActiveButton != questionButtons[index]) {
+        currentActiveButton.setStyle("-fx-background-color: " + DEFAULT_COLOR + ";");
+      }
+      questionButtons[index].setStyle("-fx-background-color: " + ACTIVE_COLOR + ";");
+      currentActiveButton = questionButtons[index];
     } catch (Exception e) {
       System.out.println("Lỗi khi tải câu hỏi tại index: " + index);
       e.printStackTrace();
@@ -140,7 +165,22 @@ public class LamBaiController {
   // Phương thức đăng ký sự kiện cho các nút đáp án
   private void registerAnswerButtonAction(Button button) {
     button.setOnAction(event -> {
-      // Thay đổi màu của nút đáp án khi được nhấn
+      // Tìm chỉ số của nút đáp án
+      int answerIndex = -1;
+      if (button == btnDapAn1) answerIndex = 0;
+      else if (button == btnDapAn2) answerIndex = 1;
+      else if (button == btnDapAn3) answerIndex = 2;
+      else if (button == btnDapAn4) answerIndex = 3;
+
+      // Lưu đáp án cho câu hỏi hiện tại
+      if (currentActiveButton != null) {
+        int questionIndex = java.util.Arrays.asList(questionButtons).indexOf(currentActiveButton);
+        if (questionIndex != -1) {
+          userAnswers[questionIndex] = answerIndex;
+        }
+      }
+
+      // Đổi màu nút đáp án
       if (currentAnswerButton != null && currentAnswerButton != button) {
         currentAnswerButton.setStyle("-fx-background-color: " + DEFAULT_COLOR + ";");
       }
