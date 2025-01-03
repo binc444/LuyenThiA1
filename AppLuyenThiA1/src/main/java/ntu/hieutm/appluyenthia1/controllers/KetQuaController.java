@@ -47,7 +47,7 @@ public class KetQuaController {
 
   @FXML
   private void luuBaiThi() {
-    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_banglaixe", "root", "")) {
+    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_a1", "root", "")) {
       // Kiểm tra nếu số báo danh đã tồn tại
       String checkQuery = "SELECT id FROM ket_qua_bai_thi WHERE so_bao_danh = ?";
       PreparedStatement checkStmt = conn.prepareStatement(checkQuery);

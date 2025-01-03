@@ -46,7 +46,7 @@ public class XemBaiLamController {
       return;
     }
 
-    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_banglaixe", "root", "")) {
+    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_a1", "root", "")) {
       // Truy vấn bảng `nguoi_dung`
       String queryNguoiDung = "SELECT ho_ten, ngay_sinh FROM nguoi_dung WHERE so_bao_danh = ?";
       PreparedStatement psNguoiDung = conn.prepareStatement(queryNguoiDung);

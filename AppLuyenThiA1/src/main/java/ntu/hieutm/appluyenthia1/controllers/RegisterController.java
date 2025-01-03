@@ -34,7 +34,7 @@ public class RegisterController {
       return;
     }
 
-    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_banglaixe", "root", "")) {
+    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_a1", "root", "")) {
       String query = "INSERT INTO nguoi_dung (loai_gplx, ho_ten, ngay_sinh, so_cccd, dia_chi, so_bao_danh) VALUES (?, ?, ?, ?, ?, ?)";
       PreparedStatement stmt = conn.prepareStatement(query);
       stmt.setString(1, loaiGPLX);

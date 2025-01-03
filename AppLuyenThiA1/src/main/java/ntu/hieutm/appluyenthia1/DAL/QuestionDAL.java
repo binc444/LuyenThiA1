@@ -15,7 +15,7 @@ public class QuestionDAL {
     List<QuestionDTO> questions = new ArrayList<>();
     try (
         // Kết nối đến cơ sở dữ liệu
-        Connection conn = DatabaseConnection.getConnnection("luyenthi_banglaixe", "root", "");
+        Connection conn = DatabaseConnection.getConnnection("luyenthi_a1", "root", "");
     ) {
       // SQL Query để lấy câu hỏi và các đáp án từ cơ sở dữ liệu
       String query = "SELECT c.id, c.noi_dung, c.duong_dan_anh, " +

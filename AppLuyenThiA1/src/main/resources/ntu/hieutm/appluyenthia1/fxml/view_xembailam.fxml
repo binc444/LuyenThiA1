@@ -19,7 +19,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtSoBaoDanh" maxWidth="300.0" minWidth="138.0" prefHeight="26.0" prefWidth="138.0" />
+                  <TextField fx:id="txtSoBaoDanh" maxWidth="300.0" minWidth="138.0" prefHeight="26.0" prefWidth="141.0" />
                </children>
             </HBox>
             <Button fx:id="btnQuayLai1" onAction="#checkBaiLam" style="-fx-background-color: #FFD700; -fx-text-fill: black; -fx-font-size: 14; -fx-background-radius: 20; -fx-padding: 8 20;" text="Kiểm tra" />

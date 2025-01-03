@@ -47,7 +47,7 @@ public class HomeController {
       return;
     }
 
-    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_banglaixe", "root", "")) {
+    try (Connection conn = DatabaseConnection.getConnnection("luyenthi_a1", "root", "")) {
       String query = "SELECT * FROM nguoi_dung WHERE so_bao_danh = ?";
       PreparedStatement stmt = conn.prepareStatement(query);
       stmt.setString(1, soBaoDanh);
